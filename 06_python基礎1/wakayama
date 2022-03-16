@@ -1,0 +1,29 @@
+import numpy as np
+import cv2
+from PIL import Image
+from matplotlib import pylab as plt
+
+#ベースの背景を作る
+img = np.zeros((512,550,3), np.uint8)
+
+
+def sankaku(img,x1,y1,x2,y2,x3,y3):
+  pts = np.array(((x1,y1), (x2,y2),(x3,y3)))
+  #最後の引数は色指定
+  img = cv2.fillPoly(img, [pts],(225,225,0))
+
+
+#上
+sankaku(img,256,100,178,250,328,250)
+
+#右
+sankaku(img,256,400,400,400,328,250)
+
+#左
+sankaku(img,100,400,178,250,256,400)
+
+
+# 画像の表示
+plt.imshow(img)
+plt.show()
+print(img.shape)
