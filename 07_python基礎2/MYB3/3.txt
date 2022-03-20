@@ -1,0 +1,10 @@
+import numpy as np
+
+def main():
+  X = np.random.rand(20, 15)
+  Z = (X-np.mean(X))/np.std(X)
+  print(np.mean(Z))
+  print(np.std(Z))
+
+if __name__=="__main__":
+  main()
