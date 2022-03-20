@@ -1,0 +1,29 @@
+#課題2(Colabolatory)
+import numpy as np
+import matplotlib.pyplot as plt
+
+def sigmoid(x):
+  return 1/(1+np.exp(-x))
+y = sigmoid(x)
+
+def softmax(x):
+  exp_x = np.exp(x)
+  sum_exp_x = np.sum(exp_x)
+  return exp_x / sum_exp_x
+
+def tanh(x):
+  exp_x = np.exp(x)
+  exp_xm = np.exp(-x)
+  return (exp_x-exp_xm) / (exp_x+exp_xm)
+
+x = np.arange(-5.0, 5.0, 0.1)
+sigmoid_y = sigmoid(x)
+softmax_y = softmax(x)
+tanh_y = tanh(x)
+
+plt.plot(x, sigmoid_y ,label = 'sigmoid')
+plt.plot(x, softmax_y ,label = 'softmax')
+plt.plot(x, tanh_y ,label = 'tanh')
+plt.ylim(-1.2, 1.2)
+plt.legend() 
+plt.show()

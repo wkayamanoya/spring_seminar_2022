@@ -1,0 +1,14 @@
+import matplotlib.pyplot as plt
+import numpy as np
+import cv2
+
+img = np.full((200, 400, 3), 0, dtype=np.uint8) #黒背景の画像作成
+pts = np.array(((200,25 ),(150,100),(250,100))) #力のトライフォース(上)
+cv2.fillPoly(img, [pts], (255, 255, 0))
+pts = np.array(((150,100),(100,175),(200,175))) #知恵のトライフォース(左下)
+cv2.fillPoly(img, [pts], (255, 255, 0))
+pts = np.array(((250,100),(200,175),(300,175))) #勇気のトライフォース(右下)
+cv2.fillPoly(img, [pts], (255, 255, 0))
+
+cv2.imwrite('img.png', img)
+plt.imshow(img) #神 々 の ト ラ イ フ ォ ー ス
