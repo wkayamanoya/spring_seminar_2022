@@ -1,0 +1,55 @@
+#kadai2
+import numpy as np
+import matplotlib.pyplot as plt
+
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+
+def softmax(x):
+    exp_x = np.exp(x)
+    exp_x_sum = np.sum(exp_x)
+    return exp_x / exp_x_sum
+
+def tanh(x):
+    exp_x = np.exp(x)
+    exp_minus_x = np.exp(-x)
+    return (exp_x - exp_minus_x) / (exp_x + exp_minus_x)
+
+
+x = np.arange(-5.0, 5.0, 0.1)
+
+y = sigmoid(x)
+plt.plot(x, y, label = 'sigmoid', color = 'blue', alpha = 1.0)
+
+y = softmax(x)
+plt.plot(x, y, label = 'softmax', color = 'red', alpha = 1.0)
+
+y = tanh(x)
+plt.plot(x, y, label = 'tanh', color = 'green', alpha = 1.0)
+
+plt.title("Activation function(sigmoid,softmax,tanh)")
+plt.xlabel("input")
+plt.ylabel("output")
+plt.ylim(-1.2, 1.2)
+plt.legend()
+plt.show()
+
+
+#kadai4
+import cv2
+import numpy as np
+
+img = np.zeros((512, 512, 3), np.uint8)
+
+center_x = int(img.shape[1]/2)
+center_y = int(img.shape[0]/2)
+center = (center_x, center_y)
+
+pts1 = np.array(([center_x,center_y - 100],[center_x - 100, center_y + 100],[center_x + 100, center_y + 100]))
+pts2 = np.array(([center_x, center_y + 100],[center_x + 50,center_y],[center_x - 50, center_y]))
+cv2.fillConvexPoly(img,pts1,(0,255,255))
+cv2.fillConvexPoly(img,pts2,(0,0,0))
+
+cv2.imshow('TRIFORCE', img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
