@@ -1,0 +1,13 @@
+import numpy as np
+
+def main():
+  text=[]
+  a = ['m', 'c', 'i', 'e', 'p', 'r', 'e', 't', 'o', ' ', 'o', 'o', 'i', 's', 'g', 'o', 'p']
+  b = ['a', 'h', 'n', ' ', 'e', 'c', 'p', 'i', 'n', 'r', 'b', 't', 'c', '-', 'r', 'u', '!']
+
+  text = [x+y for x,y in zip(a,b)]
+  for ch in text:
+    print(ch,end="")
+
+if __name__=="__main__":
+  main()
