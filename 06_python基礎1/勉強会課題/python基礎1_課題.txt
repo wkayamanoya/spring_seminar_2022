@@ -1,0 +1,50 @@
+#課題2
+import matplotlib.pyplot as plt
+import numpy as np
+
+def sigmoid(x):
+  return 1/(1 + np.exp(-x))
+
+def softmax(x):
+  exp_x = np.exp(x)
+  sum_exp_x = np.sum(exp_x)
+  return exp_x / sum_exp_x
+
+def tanh(x):
+  exp_x = np.exp(x)
+  exp_mx = np.exp(-x)
+  return (exp_x - exp_mx) / (exp_x + exp_mx)
+
+x = np.arange(-5.0, 5.0, 0.1)
+y_sig = sigmoid(x)
+y_soft = softmax(x)
+y_tanh = tanh(x)
+
+plt.plot(x, y_sig, label = 'sigmoid')
+plt.plot(x, y_soft, label = 'softmax')
+plt.plot(x, y_tanh, label = 'tanh')
+plt.ylim(-1.2, 1.2)
+plt.title('Activation fanction')
+plt.xlabel('input')
+plt.ylabel('output')
+plt.legend()
+plt.show()
+
+#課題4
+import matplotlib.pyplot as plt
+import cv2
+
+img = cv2.imread('lenna.png')
+img1 = cv2.resize(img, dsize=(200,150))
+pts1 = np.array(((100, 20), (130, 75), (70, 75)))
+pts2 = np.array(((70, 75), (100, 130), (40, 130)))
+pts3 = np.array(((130, 75), (160, 130), (100, 130)))
+
+cv2.rectangle(img1, (0, 0), (200, 150), (0,0,0), -1)
+cv2.fillPoly(img1, [pts1], (0, 255, 0))
+cv2.fillPoly(img1, [pts2], (0, 255, 0))
+cv2.fillPoly(img1, [pts3], (0, 255, 0))
+
+plt.axis('off')
+img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2RGB)
+plt.imshow(img1)
